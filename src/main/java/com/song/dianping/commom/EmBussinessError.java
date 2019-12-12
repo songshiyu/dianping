@@ -11,7 +11,10 @@ public enum EmBussinessError {
 
     //用户类型的错误
     REGISTER_DUP_FAIL(20001,"注册失败，用户已存在"),
-    LOGIN_FAIL(200012,"登录失败，用户不存在"),;
+    LOGIN_FAIL(200012,"登录失败，用户不存在"),
+
+    //admin相关错误
+    ADMIN_SHOULD_LOGIN(30001,"管理员需要先登录"),;
 
     private Integer errCode;
 

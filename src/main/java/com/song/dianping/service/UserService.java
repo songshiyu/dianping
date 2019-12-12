@@ -12,4 +12,6 @@ public interface UserService {
     UserModel register(UserModel regusterUser) throws BussinessException, UnsupportedEncodingException, NoSuchAlgorithmException;
 
     UserModel login(String telphone,String password) throws UnsupportedEncodingException, NoSuchAlgorithmException, BussinessException;
+
+    Integer countAllUser();
 }
