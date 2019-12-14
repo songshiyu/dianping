@@ -1,11 +1,16 @@
 package com.song.dianping.service.impl;
 
+import com.song.dianping.commom.BussinessException;
+import com.song.dianping.commom.EmBussinessError;
 import com.song.dianping.dal.SellerModelMapper;
 import com.song.dianping.model.SellerModel;
 import com.song.dianping.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,22 +20,35 @@ public class SellerServiceImpl implements SellerService{
     private SellerModelMapper sellerModelMapper;
 
     @Override
+    @Transactional
     public SellerModel creat(SellerModel sellerModel) {
-        return null;
+        sellerModel.setCreatedAt(new Date());
+        sellerModel.setUpdatedAt(new Date());
+        sellerModel.setRemarkScore(new BigDecimal(0));
+        sellerModel.setDisabledFlag(0);
+
+        sellerModelMapper.insertSelective(sellerModel);
+        return get(sellerModel.getId());
     }
 
     @Override
     public SellerModel get(Integer id) {
-        return null;
+        return sellerModelMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public List<SellerModel> selectAll() {
-        return null;
+        return sellerModelMapper.selectAll();
     }
 
     @Override
-    public SellerModel changeStatus(Integer id, Integer disableFlag) {
-        return null;
+    public SellerModel changeStatus(Integer id, Integer disableFlag) throws BussinessException {
+        SellerModel sellerModel = get(id);
+        if (sellerModel == null){
+            throw  new BussinessException(EmBussinessError.PARAMETER_VALIDATION_ERROR);
+        }
+        sellerModel.setDisabledFlag(disableFlag);
+        sellerModelMapper.updateByPrimaryKeySelective(sellerModel);
+        return sellerModel;
     }
 }

@@ -1,5 +1,6 @@
 package com.song.dianping.service;
 
+import com.song.dianping.commom.BussinessException;
 import com.song.dianping.model.SellerModel;
 
 import java.util.List;
@@ -12,5 +13,5 @@ public interface SellerService {
 
     List<SellerModel> selectAll();
 
-    SellerModel changeStatus(Integer id,Integer disableFlag);
+    SellerModel changeStatus(Integer id,Integer disableFlag) throws BussinessException;
 }

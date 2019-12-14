@@ -20,3 +20,14 @@ CREATE TABLE `dianping`.`seller`  (
   `disabled_flag` int(0) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `dianping`.`category`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(0) NOT NULL,
+  `updated_at` datetime(0) NOT NULL,
+  `name` varchar(20) NOT NULL DEFAULT '',
+  `icon_url` varchar(200) NOT NULL DEFAULT '',
+  `sort` int(0) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `name_unique_index`(`name`) USING BTREE
+);
