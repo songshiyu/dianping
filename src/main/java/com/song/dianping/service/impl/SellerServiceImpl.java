@@ -1,13 +1,18 @@
 package com.song.dianping.service.impl;
 
+import com.song.dianping.dal.SellerModelMapper;
 import com.song.dianping.model.SellerModel;
 import com.song.dianping.service.SellerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class SellerServiceImpl implements SellerService{
+
+    @Autowired
+    private SellerModelMapper sellerModelMapper;
 
     @Override
     public SellerModel creat(SellerModel sellerModel) {
