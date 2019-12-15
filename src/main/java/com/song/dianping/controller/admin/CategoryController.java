@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.List;
 
-@Controller
+@Controller("/admin/category")
 @RequestMapping("/admin/category")
 public class CategoryController {
 
