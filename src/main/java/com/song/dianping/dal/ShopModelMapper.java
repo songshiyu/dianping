@@ -1,7 +1,9 @@
 package com.song.dianping.dal;
 
 import com.song.dianping.model.ShopModel;
+import org.apache.ibatis.annotations.Param;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface ShopModelMapper {
@@ -54,4 +56,8 @@ public interface ShopModelMapper {
     int updateByPrimaryKey(ShopModel record);
 
     List<ShopModel> selectAll();
+
+    int countAllShop();
+
+    List<ShopModel> recommend(@Param("longtitude") BigDecimal longtitude, @Param("latitude") BigDecimal latitude);
 }
