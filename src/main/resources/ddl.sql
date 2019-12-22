@@ -32,7 +32,7 @@ CREATE TABLE `dianping`.`category`  (
   UNIQUE INDEX `name_unique_index`(`name`) USING BTREE
 );
 
-CREATE TABLE `dianpingdb`.`shop`  (
+CREATE TABLE `dianping`.`shop`  (
   `id` int(0) NOT NULL AUTO_INCREMENT,
   `created_at` datetime(0) NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` datetime(0) NOT NULL DEFAULT '0000-00-00 00:00:00',

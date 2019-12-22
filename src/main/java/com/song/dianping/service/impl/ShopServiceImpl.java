@@ -12,6 +12,7 @@ import com.song.dianping.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -72,5 +73,16 @@ public class ShopServiceImpl implements ShopService {
             shopModel.setCategoryModel(categoryService.get(shopModel.getCategoryId()));
         });
         return shopModelList;
+    }
+
+    @Override
+    public Integer countAllShop() {
+        return shopModelMapper.countAllShop();
+    }
+
+    @Override
+    public List<ShopModel> recommend(BigDecimal longtitude, BigDecimal latitude) {
+
+        return shopModelMapper.recommend(longtitude,latitude);
     }
 }

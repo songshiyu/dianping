@@ -4,6 +4,9 @@ import com.song.dianping.commom.Adminpermission;
 import com.song.dianping.commom.BussinessException;
 import com.song.dianping.commom.CommonUtil;
 import com.song.dianping.commom.EmBussinessError;
+import com.song.dianping.service.CategoryService;
+import com.song.dianping.service.SellerService;
+import com.song.dianping.service.ShopService;
 import com.song.dianping.service.UserService;
 import com.song.dianping.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +39,24 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private SellerService sellerService;
+
+    @Autowired
+    private ShopService shopService;
+
+    @Autowired
+    private CategoryService categoryService;
+
     public static final String CURRENT_ADMIN_SESSION = "currentAdminSession";
 
     @RequestMapping("/index")
     @Adminpermission
     public ModelAndView toIndex(){
         ModelAndView modelAndView = new ModelAndView("/admin/admin/index");
+        modelAndView.addObject("categoryCount",categoryService.countAllCategory());
+        modelAndView.addObject("shopCount",shopService.countAllShop());
+        modelAndView.addObject("sellerCount",sellerService.countAllSeller());
         modelAndView.addObject("userCount",userService.countAllUser());
         modelAndView.addObject("CONTROLLER_NAME","admin");
         modelAndView.addObject("ACTION_NAME","index");
