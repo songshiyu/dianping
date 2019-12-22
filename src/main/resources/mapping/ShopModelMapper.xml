@@ -251,4 +251,13 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/> from shop order by id ASC
   </select>
+
+  <select id="countAllShop" resultType="java.lang.Integer">
+    SELECT COUNT(1) from shop
+  </select>
+
+  <select id="recommend" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from shop order by id ASC
+  </select>
+
 </mapper>
